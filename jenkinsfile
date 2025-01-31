@@ -1,11 +1,20 @@
 pipeline {
-	agent any
-	stages {
-	   stage('Build'){
-	     step
-	     {
-	       sh 'echo "build the pipeline or job is completes."'
-	     }
-	   }
-	}
+    agent any
+    stages {  // ✅ Wrap all stages inside 'stages'
+        stage('Build') {
+            steps {  // ✅ Use 'steps' instead of 'step'
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running Tests...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying Application...'
+            }
+        }
+    }
 }
